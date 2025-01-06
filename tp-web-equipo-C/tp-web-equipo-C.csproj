@@ -96,10 +96,10 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Vistas\Home\Exito.aspx" />
-    <Content Include="Vistas\Home\Error.aspx" />
-    <Content Include="Vistas\Voucher\SeleccionarPremio.aspx" />
-    <Content Include="Vistas\Voucher\RegistroCliente.aspx" />
+    <Content Include="Exito.aspx" />
+    <Content Include="Error.aspx" />
+    <Content Include="SeleccionarPremio.aspx" />
+    <Content Include="RegistroCliente.aspx" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-grid.rtl.css" />
@@ -117,7 +117,7 @@
     <Content Include="Content\bootstrap.rtl.css" />
     <Content Include="Content\bootstrap.rtl.min.css" />
     <Content Include="Content\Site.css" />
-    <Content Include="Vistas\Home\Default.aspx" />
+    <Content Include="Default.aspx" />
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Scripts\bootstrap.bundle.js" />
@@ -161,40 +161,40 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
-    <Compile Include="Vistas\Home\Exito.aspx.cs">
+    <Compile Include="Exito.aspx.cs">
       <DependentUpon>Exito.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Vistas\Home\Exito.aspx.designer.cs">
+    <Compile Include="Exito.aspx.designer.cs">
       <DependentUpon>Exito.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Vistas\Home\Error.aspx.cs">
+    <Compile Include="Error.aspx.cs">
       <DependentUpon>Error.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Vistas\Home\Error.aspx.designer.cs">
+    <Compile Include="Error.aspx.designer.cs">
       <DependentUpon>Error.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Vistas\Voucher\SeleccionarPremio.aspx.cs">
+    <Compile Include="SeleccionarPremio.aspx.cs">
       <DependentUpon>SeleccionarPremio.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Vistas\Voucher\SeleccionarPremio.aspx.designer.cs">
+    <Compile Include="SeleccionarPremio.aspx.designer.cs">
       <DependentUpon>SeleccionarPremio.aspx</DependentUpon>
     </Compile>
     <Compile Include="App_Start\RouteConfig.cs" />
-    <Compile Include="Vistas\Voucher\RegistroCliente.aspx.cs">
+    <Compile Include="RegistroCliente.aspx.cs">
       <DependentUpon>RegistroCliente.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Vistas\Voucher\RegistroCliente.aspx.designer.cs">
+    <Compile Include="RegistroCliente.aspx.designer.cs">
       <DependentUpon>RegistroCliente.aspx</DependentUpon>
     </Compile>
-    <Compile Include="Vistas\Home\Default.aspx.cs">
+    <Compile Include="Default.aspx.cs">
       <DependentUpon>Default.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>
     </Compile>
-    <Compile Include="Vistas\Home\Default.aspx.designer.cs">
+    <Compile Include="Default.aspx.designer.cs">
       <DependentUpon>Default.aspx</DependentUpon>
     </Compile>
     <Compile Include="Global.asax.cs">
@@ -225,6 +225,8 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Vistas\Home\" />
+    <Folder Include="Vistas\Voucher\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="Content\bootstrap.rtl.min.css.map" />
