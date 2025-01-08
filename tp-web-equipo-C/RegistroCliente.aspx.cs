@@ -13,5 +13,8 @@ namespace tp_web_equipo_C
         {
 
         }
+        protected void btnParticipar_Click(object sender, EventArgs e)
+        {
+        }
     }
 }

@@ -2,18 +2,51 @@
 
 <asp:Content ID="BodyContent" ContentPlaceHolderID="MainContent" runat="server">
     <main aria-labelledby="title">
-        <h2 id="title"><%: Title %>.</h2>
-        <h3>Your contact page.</h3>
-        <address>
-            One Microsoft Way<br />
-            Redmond, WA 98052-6399<br />
-            <abbr title="Phone">P:</abbr>
-            425.555.0100
-        </address>
-
-        <address>
-            <strong>Support:</strong>   <a href="mailto:Support@example.com">Support@example.com</a><br />
-            <strong>Marketing:</strong> <a href="mailto:Marketing@example.com">Marketing@example.com</a>
-        </address>
+        <div class="container vh-100 d-flex justify-content-center align-items-center">
+        <div class="row w-75">
+            <h2 class="text-center mb-4">Formulario de registro</h2>
+             <asp:Panel ID="FormPanel" runat="server" CssClass="row">
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                             <asp:Label ID="lblDni" runat="server" Text="DNI" CssClass="form-label"></asp:Label>
+                             <asp:TextBox ID="txtDni" runat="server" CssClass="form-control" Required="true"></asp:TextBox>
+                        </div>
+                        <div class="mb-3">
+                            <asp:Label ID="lblNombre" runat="server" Text="Nombre" CssClass="form-label"></asp:Label>
+                            <asp:TextBox ID="textNombre" runat="server" CssClass="form-control" Required="true"></asp:TextBox>
+                        </div>
+                        <div class="mb-3">
+                            <asp:Label ID="lblApellido" runat="server" Text="Apellido" CssClass="form-label"></asp:Label>
+                            <asp:TextBox ID="textApellido" runat="server" CssClass="form-control" Required="true"></asp:TextBox>
+                        </div>
+                        <div class="mb-3">
+                            <asp:Label ID="lblEmail" runat="server" Text="Email" CssClass="form-label"></asp:Label>
+                            <asp:TextBox ID="textEmail" runat="server" CssClass="form-control" Required="true"></asp:TextBox>
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="mb-3">
+                            <asp:Label ID="lblDireccion" runat="server" Text="Direccion" CssClass="form-label"></asp:Label>
+                            <asp:TextBox ID="txtDireccion" runat="server" CssClass="form-control" Required="true"></asp:TextBox>
+                        </div>
+                        <div class="mb-3">
+                            <asp:Label ID="lblCiudad" runat="server" Text="Ciudad" CssClass="form-label"></asp:Label>
+                            <asp:TextBox ID="txtCiudad" runat="server" CssClass="form-control" Required="true"></asp:TextBox>
+                        </div>
+                        <div class="mb-3">
+                            <asp:Label ID="lblCp" runat="server" Text="Codigo postal" CssClass="form-label"></asp:Label>
+                            <asp:TextBox ID="txtCp" runat="server" CssClass="form-control" Required="true"></asp:TextBox>
+                        </div>
+                        <div class="form-check mb-3">
+                            <asp:CheckBox ID="chkCondiciones" runat="server" CssClass="form-check-input" />
+                            <asp:Label ID="lblCondiciones" runat="server" Text="Acepto las condiciones" CssClass="form-check-label"></asp:Label>
+                        </div>
+                    </div>
+                 </asp:Panel>
+                <div class="text-center">
+                    <asp:Button ID="btnParticipar" runat="server" Text="Participar" CssClass="btn btn-primary w-50" OnClick="btnParticipar_Click" />
+                </div>
+        </div>
+    </div>
     </main>
 </asp:Content>
