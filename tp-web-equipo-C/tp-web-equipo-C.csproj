@@ -96,6 +96,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Content Include="Canjear.aspx" />
     <Content Include="Exito.aspx" />
     <Content Include="Error.aspx" />
     <Content Include="SeleccionarPremio.aspx" />
@@ -161,6 +162,13 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="App_Start\BundleConfig.cs" />
+    <Compile Include="Canjear.aspx.cs">
+      <DependentUpon>Canjear.aspx</DependentUpon>
+      <SubType>ASPXCodeBehind</SubType>
+    </Compile>
+    <Compile Include="Canjear.aspx.designer.cs">
+      <DependentUpon>Canjear.aspx</DependentUpon>
+    </Compile>
     <Compile Include="Exito.aspx.cs">
       <DependentUpon>Exito.aspx</DependentUpon>
       <SubType>ASPXCodeBehind</SubType>

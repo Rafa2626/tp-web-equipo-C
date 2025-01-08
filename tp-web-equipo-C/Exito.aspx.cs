@@ -11,7 +11,7 @@ namespace tp_web_equipo_C
     {
         protected void Page_Load(object sender, EventArgs e)
         {
-
+            Title = "Vaucher registrado exisotamente!";
         }
     }
 }
