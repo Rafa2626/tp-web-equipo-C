@@ -8,7 +8,7 @@
                 <div class="col-12 my-auto text-center">
                     <h1>La mejor tienda online de la web.</h1>
                     <p>Al realizar una compra recibirá un voucher para participar de un sorteo!</p>
-                    <a href="RegistroCliente" class="btn btn-primary btn-md">Registro! &raquo;</a>
+                    <a href="Canjear" class="btn btn-primary btn-md">Participar! &raquo;</a>
                 </div>
             </div>
         </div>
