@@ -7,8 +7,11 @@ using System.Web.UI.WebControls;
 
 namespace tp_web_equipo_C
 {
-    public partial class About : Page
+    public partial class SeleccionarPremio : System.Web.UI.Page
     {
+        protected void Page_Load(object sender, EventArgs e)
+        {
 
+        }
     }
 }

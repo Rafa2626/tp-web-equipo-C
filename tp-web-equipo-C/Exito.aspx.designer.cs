@@ -11,7 +11,7 @@ namespace tp_web_equipo_C
 {
 
 
-    public partial class About
+    public partial class Exito
     {
     }
 }
