@@ -10,8 +10,9 @@
                     <p>Ingrese el código de su voucher!</p>
                     <asp:TextBox ID="txtVoucher" runat="server" placeholder="XXXX-XXXX-XXXX-XXXX"></asp:TextBox>
                     <div style="margin-top: 10px;">
-                        <asp:Button ID="btnSiguiente" runat="server" CssClass="btn btn-primary" Text="Siguiente" />
+                    <asp:Button ID="btnSiguiente" runat="server" CssClass="btn btn-primary" Text="Siguiente" OnClick="btnSiguiente_Click" />
                     </div>
+                    <asp:Label ID="lblResultado" runat="server" CssClass="text-success mt-3"></asp:Label>
                 </div>
                 <div class="col">
                 </div>
