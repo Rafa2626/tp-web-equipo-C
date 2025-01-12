@@ -9,7 +9,7 @@
                     <div class="col-md-6">
                         <div class="mb-3">
                              <asp:Label ID="lblDni" runat="server" Text="DNI" CssClass="form-label"></asp:Label>
-                             <asp:TextBox ID="txtDni" runat="server" CssClass="form-control" Required="true"></asp:TextBox>
+                             <asp:TextBox ID="txtDni" runat="server" CssClass="form-control" Required="true" OnTextChanged="txtDni_TextChanged" AutoPostBack="true"></asp:TextBox>
                         </div>
                         <div class="mb-3">
                             <asp:Label ID="lblNombre" runat="server" Text="Nombre" CssClass="form-label"></asp:Label>

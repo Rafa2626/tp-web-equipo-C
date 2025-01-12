@@ -44,6 +44,7 @@ namespace tp_web_equipo_C
             if (listaFiltrada.Count > 0)
             {
                 lblResultado.Text = string.Join("<br/>", listaFiltrada.Select(x => $"Código: {x.Codigo}"));
+                Session.Add( "VoucherId", txtVoucher.Text);
                 Response.Redirect("SeleccionarPremio.aspx", false);
 
             }

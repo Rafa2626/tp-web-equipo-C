@@ -14,9 +14,19 @@ namespace tp_web_equipo_C
         public List<Premio> ListaPremios { get; set; }
         protected void Page_Load(object sender, EventArgs e)
         {
-            PremioNegocio negocio = new PremioNegocio();
-            ListaPremios = negocio.listar();
+            if (!IsPostBack)
+            {
+                PremioNegocio negocio = new PremioNegocio();
+                ListaPremios = negocio.listar();
+                repRepetidor.DataSource = ListaPremios;
+                repRepetidor.DataBind();
+            }
         }
 
+        protected void btnSeleccionar_Click(object sender, EventArgs e)
+        {
+            string IdPremio = ((Button)sender).CommandArgument;
+            Response.Redirect("RegistroCliente.aspx?IdPremio=" + IdPremio,false);
+        }
     }
 }
