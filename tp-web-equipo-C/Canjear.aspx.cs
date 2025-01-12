@@ -7,7 +7,6 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
-using tp_web_equipo_C.Modelos;
 
 namespace tp_web_equipo_C
 {
@@ -45,6 +44,7 @@ namespace tp_web_equipo_C
             if (listaFiltrada.Count > 0)
             {
                 lblResultado.Text = string.Join("<br/>", listaFiltrada.Select(x => $"Código: {x.Codigo}"));
+                Response.Redirect("SeleccionarPremio.aspx", false);
 
             }
             else
