@@ -42,6 +42,15 @@ namespace tp_web_equipo_C
         protected global::System.Web.UI.WebControls.TextBox txtDni;
 
         /// <summary>
+        /// Control lblValidarDni.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblValidarDni;
+
+        /// <summary>
         /// Control lblNombre.
         /// </summary>
         /// <remarks>
@@ -150,6 +159,15 @@ namespace tp_web_equipo_C
         protected global::System.Web.UI.WebControls.TextBox txtCp;
 
         /// <summary>
+        /// Control lblValidarCP.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblValidarCP;
+
+        /// <summary>
         /// Control chkCondiciones.
         /// </summary>
         /// <remarks>
@@ -166,6 +184,15 @@ namespace tp_web_equipo_C
         /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblCondiciones;
+
+        /// <summary>
+        /// Control lblNoContinuar.
+        /// </summary>
+        /// <remarks>
+        /// Campo generado automáticamente.
+        /// Para modificarlo, mueva la declaración del campo del archivo del diseñador al archivo de código subyacente.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNoContinuar;
 
         /// <summary>
         /// Control btnParticipar.

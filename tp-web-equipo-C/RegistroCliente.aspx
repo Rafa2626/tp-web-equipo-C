@@ -10,6 +10,7 @@
                         <div class="mb-3">
                              <asp:Label ID="lblDni" runat="server" Text="DNI" CssClass="form-label"></asp:Label>
                              <asp:TextBox ID="txtDni" runat="server" CssClass="form-control" Required="true" OnTextChanged="txtDni_TextChanged" AutoPostBack="true"></asp:TextBox>
+                            <asp:Label ID="lblValidarDni" runat="server" CssClass="text-danger"></asp:Label>
                         </div>
                         <div class="mb-3">
                             <asp:Label ID="lblNombre" runat="server" Text="Nombre" CssClass="form-label"></asp:Label>
@@ -35,7 +36,8 @@
                         </div>
                         <div class="mb-3">
                             <asp:Label ID="lblCp" runat="server" Text="Codigo postal" CssClass="form-label"></asp:Label>
-                            <asp:TextBox ID="txtCp" runat="server" CssClass="form-control" Required="true"></asp:TextBox>
+                            <asp:TextBox ID="txtCp" runat="server" CssClass="form-control" Required="true" OnTextChanged="txtCp_TextChanged" AutoPostBack="true"></asp:TextBox>
+                            <asp:Label ID="lblValidarCP" runat="server" CssClass="text-danger"></asp:Label>
                         </div>
                         <div class="form-check mb-3">
                             <asp:CheckBox ID="chkCondiciones" runat="server" CssClass="form-check-input" />
@@ -44,7 +46,9 @@
                     </div>
                  </asp:Panel>
                 <div class="text-center">
+                    <asp:Label ID="lblNoContinuar" runat="server" CssClass="text-danger"></asp:Label>
                     <asp:Button ID="btnParticipar" runat="server" Text="Participar" CssClass="btn btn-primary w-50" OnClick="btnParticipar_Click" />
+                    
                 </div>
         </div>
     </div>

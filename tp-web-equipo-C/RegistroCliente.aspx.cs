@@ -6,6 +6,7 @@ using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace tp_web_equipo_C
 {
@@ -13,8 +14,9 @@ namespace tp_web_equipo_C
     {
         List<Cliente> ListaClientes;
         ClienteNegocio Negocio;
+        bool Continuar = true;
         protected void Page_Load(object sender, EventArgs e)
-        { 
+        {
             if (!IsPostBack)
             {
                 string VaoucherId = Session["VoucherId"] != null ? Session["VoucherId"].ToString() : "";
@@ -26,8 +28,8 @@ namespace tp_web_equipo_C
             Negocio = new ClienteNegocio();
             ListaClientes = Negocio.listarClientes();
             ListaFiltrada = ListaClientes.FindAll(x => x.Documento == txtDni.Text);
-            if ( !(ListaFiltrada.Count > 0) )
-            {   
+            if (!(ListaFiltrada.Count > 0) && Continuar == false)
+            {
                 //PrimeroAgregamos al cliente a la db si no lo está
                 Cliente aux = new Cliente();
                 aux.Documento = txtDni.Text;
@@ -59,10 +61,10 @@ namespace tp_web_equipo_C
                 VaucherNegocio voucherNegocio = new VaucherNegocio();
                 voucherNegocio.modificar(voucherAux);
                 int IdPremio = voucherAux.IdPremio;
-                Response.Redirect("Exito?IdPremio=" + IdPremio,false);
+                Response.Redirect("Exito?IdPremio=" + IdPremio, false);
             }
             //si el cliente ya está registrado solo actualizamos los datos del voucher
-            else
+            else if (Continuar == true)
             {
                 //Volvemos a buscar en la Lista de clientes para obtener el id
                 List<Cliente> ListaFiltrada2;
@@ -86,6 +88,10 @@ namespace tp_web_equipo_C
                 int IdPremio = voucherAux.IdPremio;
                 Response.Redirect("Exito?IdPremio=" + IdPremio, false);
             }
+            else
+            {
+                lblNoContinuar.Text = "Los datos no son válidos!";
+            }
         }
 
         protected void txtDni_TextChanged(object sender, EventArgs e)
@@ -96,34 +102,60 @@ namespace tp_web_equipo_C
                 Negocio = new ClienteNegocio();
                 ListaClientes = Negocio.listarClientes();
                 ListaFiltrada = ListaClientes.FindAll(x => x.Documento == txtDni.Text);
-
-                if (ListaFiltrada.Count > 0)
+                if (!(int.TryParse(txtCp.Text, out int numero)))
                 {
-                    textNombre.Text = ListaFiltrada[0].Nombre;
-                    textApellido.Text = ListaFiltrada[0].Apellido;
-                    textEmail.Text = ListaFiltrada[0].Email;
-                    txtDireccion.Text = ListaFiltrada[0].Direccion;
-                    txtCiudad.Text = ListaFiltrada[0].Ciudad;
-                    txtCp.Text = ListaFiltrada[0].CP.ToString();
-
+                    lblValidarDni.Text = "Error: Solo se permiten números.";
+                    Continuar = false;
                 }
                 else
                 {
-                    textNombre.Text = "";
-                    textApellido.Text = "";
-                    textEmail.Text = "";
-                    txtDireccion.Text = "";
-                    txtCiudad.Text = "";
-                    txtCp.Text = "";
+                    lblValidarDni.Text = "";
+                    Continuar = true;
+                    if (ListaFiltrada.Count > 0)
+                    {
+                        textNombre.Text = ListaFiltrada[0].Nombre;
+                        textApellido.Text = ListaFiltrada[0].Apellido;
+                        textEmail.Text = ListaFiltrada[0].Email;
+                        txtDireccion.Text = ListaFiltrada[0].Direccion;
+                        txtCiudad.Text = ListaFiltrada[0].Ciudad;
+                        txtCp.Text = ListaFiltrada[0].CP.ToString();
+
+                    }
+                    else
+                    {
+                        textNombre.Text = "";
+                        textApellido.Text = "";
+                        textEmail.Text = "";
+                        txtDireccion.Text = "";
+                        txtCiudad.Text = "";
+                        txtCp.Text = "";
+                    }
                 }
+
+
             }
             catch (Exception ex)
             {
                 throw ex;
             }
-                
-            
-            
+
+
+
+        }
+
+        protected void txtCp_TextChanged(object sender, EventArgs e)
+        {
+
+            if (!(int.TryParse(txtCp.Text, out int numero)))
+            {
+                lblValidarCP.Text = "Error: Solo se permiten números.";
+                Continuar = false;
+            }
+            else
+            {
+                lblValidarCP.Text = "";
+                Continuar = true;
+            }
         }
     }
 }
