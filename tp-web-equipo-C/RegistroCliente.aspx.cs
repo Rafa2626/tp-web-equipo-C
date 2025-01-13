@@ -39,7 +39,6 @@ namespace tp_web_equipo_C
                 aux.CP = int.Parse(txtCp.Text);
                 Negocio.agregar(aux);
 
-
                 //Volvemos a buscar en la Lista de clientes para obtener el id
                 List<Cliente> ListaFiltrada2;
                 ClienteNegocio NegocioActualizado = new ClienteNegocio();
@@ -59,6 +58,33 @@ namespace tp_web_equipo_C
                 }
                 VaucherNegocio voucherNegocio = new VaucherNegocio();
                 voucherNegocio.modificar(voucherAux);
+                int IdPremio = voucherAux.IdPremio;
+                Response.Redirect("Exito?IdPremio=" + IdPremio,false);
+            }
+            //si el cliente ya está registrado solo actualizamos los datos del voucher
+            else
+            {
+                //Volvemos a buscar en la Lista de clientes para obtener el id
+                List<Cliente> ListaFiltrada2;
+                ClienteNegocio NegocioActualizado = new ClienteNegocio();
+                ListaClientes = NegocioActualizado.listarClientes();
+                ListaFiltrada2 = ListaClientes.FindAll(x => x.Documento == txtDni.Text);
+                Voucher voucherAux = new Voucher();
+                voucherAux.IdCliente = ListaFiltrada2[0].Id;
+                voucherAux.FechaCanje = DateTime.Now;
+                voucherAux.IdPremio = int.Parse(Request.QueryString["IdPremio"]);
+                if (Session["VoucherId"] != null)
+                {
+                    voucherAux.Codigo = Session["VoucherId"].ToString();
+                }
+                else
+                {
+                    voucherAux.Codigo = "error";
+                }
+                VaucherNegocio voucherNegocio = new VaucherNegocio();
+                voucherNegocio.modificar(voucherAux);
+                int IdPremio = voucherAux.IdPremio;
+                Response.Redirect("Exito?IdPremio=" + IdPremio, false);
             }
         }
 
