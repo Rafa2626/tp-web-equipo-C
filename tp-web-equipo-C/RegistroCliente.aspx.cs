@@ -14,9 +14,13 @@ namespace tp_web_equipo_C
     {
         List<Cliente> ListaClientes;
         ClienteNegocio Negocio;
-        bool Continuar = true;
+        bool Continuar = false;
         protected void Page_Load(object sender, EventArgs e)
         {
+            //if (!(Continuar))
+            //    btnParticipar.Enabled = false;
+            //else
+            //    btnParticipar.Enabled = true;
             if (!IsPostBack)
             {
                 string VaoucherId = Session["VoucherId"] != null ? Session["VoucherId"].ToString() : "";
@@ -102,7 +106,7 @@ namespace tp_web_equipo_C
                 Negocio = new ClienteNegocio();
                 ListaClientes = Negocio.listarClientes();
                 ListaFiltrada = ListaClientes.FindAll(x => x.Documento == txtDni.Text);
-                if (!(int.TryParse(txtCp.Text, out int numero)))
+                if (!(int.TryParse(txtDni.Text, out int numero)))
                 {
                     lblValidarDni.Text = "Error: Solo se permiten números.";
                     Continuar = false;
