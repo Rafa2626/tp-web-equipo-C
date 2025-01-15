@@ -125,15 +125,15 @@ namespace tp_web_equipo_C
                         txtCp.Text = ListaFiltrada[0].CP.ToString();
 
                     }
-                    else
-                    {
-                        textNombre.Text = "";
-                        textApellido.Text = "";
-                        textEmail.Text = "";
-                        txtDireccion.Text = "";
-                        txtCiudad.Text = "";
-                        txtCp.Text = "";
-                    }
+                    //else
+                    //{
+                    //    textNombre.Text = "";
+                    //    textApellido.Text = "";
+                    //    textEmail.Text = "";
+                    //    txtDireccion.Text = "";
+                    //    txtCiudad.Text = "";
+                    //    txtCp.Text = "";
+                    //}
                 }
 
 
@@ -160,6 +160,20 @@ namespace tp_web_equipo_C
                 lblValidarCP.Text = "";
                 Continuar = true;
             }
+        }
+
+        
+
+        private bool SoloLetras(string texto)
+        {
+            foreach(char c in texto)
+            {
+                if (!char.IsLetter(c))
+                {
+                    return false;
+                }
+            }
+            return true;
         }
     }
 }
