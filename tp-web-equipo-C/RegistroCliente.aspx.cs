@@ -28,6 +28,17 @@ namespace tp_web_equipo_C
         }
         protected void btnParticipar_Click(object sender, EventArgs e)
         {
+            // Validar si se aceptaron las condiciones
+            if (!chkCondiciones.Checked)
+            {
+                lblNoAcepto.Text = "Debe aceptar las condiciones para continuar.";
+                return; 
+            }
+            else
+            {
+                lblNoAcepto.Text = ""; 
+            }
+
             List<Cliente> ListaFiltrada;
             Negocio = new ClienteNegocio();
             ListaClientes = Negocio.listarClientes();
@@ -102,50 +113,105 @@ namespace tp_web_equipo_C
         {
             try
             {
-                List<Cliente> ListaFiltrada;
-                Negocio = new ClienteNegocio();
-                ListaClientes = Negocio.listarClientes();
-                ListaFiltrada = ListaClientes.FindAll(x => x.Documento == txtDni.Text);
-                if (!(int.TryParse(txtDni.Text, out int numero)))
+                // Validar DNI
+                if (!string.IsNullOrWhiteSpace(txtDni.Text) && !int.TryParse(txtDni.Text, out int numero))
                 {
-                    lblValidarDni.Text = "Error: Solo se permiten números.";
+                    lblValidarDni.Text = "Error: Solo se permiten números en el DNI.";
                     Continuar = false;
+                    return;
                 }
                 else
                 {
                     lblValidarDni.Text = "";
-                    Continuar = true;
-                    if (ListaFiltrada.Count > 0)
-                    {
-                        textNombre.Text = ListaFiltrada[0].Nombre;
-                        textApellido.Text = ListaFiltrada[0].Apellido;
-                        textEmail.Text = ListaFiltrada[0].Email;
-                        txtDireccion.Text = ListaFiltrada[0].Direccion;
-                        txtCiudad.Text = ListaFiltrada[0].Ciudad;
-                        txtCp.Text = ListaFiltrada[0].CP.ToString();
-
-                    }
-                    //else
-                    //{
-                    //    textNombre.Text = "";
-                    //    textApellido.Text = "";
-                    //    textEmail.Text = "";
-                    //    txtDireccion.Text = "";
-                    //    txtCiudad.Text = "";
-                    //    txtCp.Text = "";
-                    //}
                 }
 
+                // Validar campos de texto
+                string patternSoloLetras = @"^[a-zA-Z\s]+$";
+                string patternEmail = @"^[^@\s]+@[^@\s]+\.[^@\s]+$";
 
+                bool validacionExitosa = true;
+
+                // Validar Nombre
+                if (!string.IsNullOrWhiteSpace(textNombre.Text) && !System.Text.RegularExpressions.Regex.IsMatch(textNombre.Text, patternSoloLetras))
+                {
+                    lblValidarNombre.Text = "Error: Solo se permiten letras en el nombre.";
+                    validacionExitosa = false;
+                }
+                else
+                {
+                    lblValidarNombre.Text = "";
+                }
+
+                // Validar Apellido
+                if (!string.IsNullOrWhiteSpace(textApellido.Text) && !System.Text.RegularExpressions.Regex.IsMatch(textApellido.Text, patternSoloLetras))
+                {
+                    lblValidarApellido.Text = "Error: Solo se permiten letras en el apellido.";
+                    validacionExitosa = false;
+                }
+                else
+                {
+                    lblValidarApellido.Text = "";
+                }
+
+                // Validar Ciudad
+                if (!string.IsNullOrWhiteSpace(txtCiudad.Text) && !System.Text.RegularExpressions.Regex.IsMatch(txtCiudad.Text, patternSoloLetras))
+                {
+                    lblValidarCiudad.Text = "Error: Solo se permiten letras en la ciudad.";
+                    validacionExitosa = false;
+                }
+                else
+                {
+                    lblValidarCiudad.Text = "";
+                }
+
+                // Validar Email
+                if (!string.IsNullOrWhiteSpace(textEmail.Text) && !System.Text.RegularExpressions.Regex.IsMatch(textEmail.Text, patternEmail))
+                {
+                    lblValidarEmail.Text = "Error: Formato de email inválido.";
+                    validacionExitosa = false;
+                }
+                else
+                {
+                    lblValidarEmail.Text = "";
+                }
+
+                // Si hay errores de validación, no continuar
+                if (!validacionExitosa)
+                {
+                    Continuar = false;
+                    return;
+                }
+
+                // Lógica de búsqueda de clientes en base al DNI
+                Negocio = new ClienteNegocio();
+                ListaClientes = Negocio.listarClientes();
+                List<Cliente> ListaFiltrada = ListaClientes.FindAll(x => x.Documento == txtDni.Text);
+
+                if (ListaFiltrada.Count > 0)
+                {
+                    // Cargar datos del cliente existente
+                    textNombre.Text = ListaFiltrada[0].Nombre;
+                    textApellido.Text = ListaFiltrada[0].Apellido;
+                    textEmail.Text = ListaFiltrada[0].Email;
+                    txtDireccion.Text = ListaFiltrada[0].Direccion;
+                    txtCiudad.Text = ListaFiltrada[0].Ciudad;
+                    txtCp.Text = ListaFiltrada[0].CP.ToString();
+                    lblValidarDni.Text = ""; // Limpiar cualquier error previo
+                }
+                else
+                {
+                    // Si no se encuentra, permitir continuar con el registro
+                    Continuar = true;
+                }
             }
             catch (Exception ex)
             {
-                throw ex;
+                // Manejo de excepciones
+                lblValidarDni.Text = "Ocurrió un error: " + ex.Message;
             }
-
-
-
         }
+
+
 
         protected void txtCp_TextChanged(object sender, EventArgs e)
         {
